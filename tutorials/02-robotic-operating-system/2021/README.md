@@ -436,17 +436,12 @@ It is common practice to have several nodes running, which depends on each other
 
   
 
-Download `object_detection.py` from [the hands-on repository.](./src/)
-
-  
+Download `object_detection.py` from [the hands-on repository.](./src/) 
 
 We are going to use an object classifier implemented in Keras as a node in ROS which can capture images from camera nodes.
 
-  
 
 #### 2.1. Publish static images
-
-  
 
 If you don't have a camera, you can publish an image or an AVI movie with `image_publisher`:
 
@@ -466,8 +461,6 @@ rostopic list
 
 ```
 
-  
-
 If the node is running properly, there should be several topics related to `/image_publisher`. For example, `/image_publisher_<random-number>/image_raw`. You can try to read the data signal with echo command:
 
 ```
@@ -476,12 +469,8 @@ rostopic echo /image_publisher_<random-number>/image_raw
 
 ```
 
-  
-
 However, this is going to echo the numerical representation of the image.
 
-  
-  
 
 #### 2.2. Visualisation with rviz
 
@@ -495,8 +484,6 @@ rosrun image_view image_view image:=/image_publisher_<random-number>/image_raw
 
 ```
 
-  
-
 You can also visualise images and other sensors using `rviz`. This tool provides a graphical interface for visualising robots and sensors. Open `rviz` with the following command:
 
 ```
@@ -507,11 +494,9 @@ rosrun rviz rviz
 
 Then add a new sensor and configure the related topic for it. When running ROS in virtual box, using rviz is not recommended because it requires a lot of memory and processing time.
 
-  
 
 ### 2.3. Publish from webcam
 
-  
 
 You can capture most webcams using `usb_cam` in ROS:
 
@@ -521,23 +506,13 @@ rosrun usb_cam usb_cam_node
 
 ```
 
-  
-
 ### 2.4. Run `object_detection.py` node
-
-  
 
 After downloading the code `object_detection.py`, try to understand the code.
 
-  
-
 Place the file in `~/ros_ws/src/this_tutorial/src/object_detection.py`, make sure it is executable with `chmod +x object_detection.py` similar to other codes. This node is going to read image signals as a ROS sensor message. Then, it provides a simple interface for classifying the image content.
 
-  
-
 Before running the node, you need to make sure that this node is subscribed to the correct topic. Modify the last two lines in `object_detection.py`. Change the topic name in `sub = rospy.Subscriber("/camera/RGB/image_color", Image, callback)` according to the topic which you are publishing images/video. Then run the node for object recognition.
-
-  
 
 ```
 
@@ -545,15 +520,7 @@ rosrun this_tutorial object_detection.py
 
 ```
 
-  
-
 If you are running this process for the first time, it is very likely that Keras needs to download the model automatically. Next time you run this node, it doesn't need to download it again. After it loads the model, OpenCV is going to open a window which shows frames of video coming from the image topic published by a camera. On this window, pressing `r` runs the prediction process, and `q` exits the window. Each time you call for recognition, the results are published in greeting topic. So, in another terminal, you can read the published messages as before with running the feedback node:
-
-  
-
-```
-
-
 
 For feeding live image to the `object_detection.py` via Knect you have to use this command:
 
@@ -561,21 +528,18 @@ For feeding live image to the `object_detection.py` via Knect you have to use th
 roslaunch freenect_launch freenect.launch
 
 ```
+
 But in ROS Noetic version you don't have access to this tools. For this reason you could use this tutorial to install libfreenect
 
 [libfreenect Installation on ROS Noetic](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/)
 
 Then run :
+
 ```
 rostopic echo /greeting_topic
 
 ```
 
-
-  
-
 #### Contacts
-
-  
 
 Contact Aram Karimi(aram.karimi@gu.se) for questions and help.
