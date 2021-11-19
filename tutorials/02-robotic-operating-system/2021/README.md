@@ -216,9 +216,7 @@ print("hello rosrun!")
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
-
-  
-
+ 
 Second, the Python code must be executable to be able to work with ROS:
 
 ```
@@ -226,8 +224,6 @@ Second, the Python code must be executable to be able to work with ROS:
 chmod +x ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
-
-  
 
 Now, you can run it:
 
@@ -264,11 +260,7 @@ rosrun this_tutorial hello.py
 
 ```
 
-  
-
 *HINT: you can kill nodes with `ctrl+c`*
-
-  
 
 You can check the information about this node, in another terminal:
 
@@ -277,8 +269,6 @@ You can check the information about this node, in another terminal:
 rosnode info \greeter
 
 ```
-
-  
 
 Nodes alone cannot communicate with each other. The solution is to communicate messages under a ROS topic.
 
@@ -309,8 +299,6 @@ rate.sleep()
 
 ```
 
-  
-
 Now, when we run this node, there is no sign of input in this terminal.
 
 ```
@@ -319,8 +307,6 @@ rosrun this_tutorial hello.py
 
 ```
 
-  
-
 In a separate terminal, we can check if the new topic is active.
 
 ```
@@ -328,8 +314,6 @@ In a separate terminal, we can check if the new topic is active.
 rostopic list
 
 ```
-
-  
 
 Then, if the /greeting_topic is on the list, we can get the detailed
 
@@ -340,8 +324,6 @@ information about the publisher and its datatype:
 rostopic info /greeting_topic
 
 ```
-
-  
 
 We can echo the content that is published in the topic:
 
