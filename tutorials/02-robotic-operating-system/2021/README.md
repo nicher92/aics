@@ -143,7 +143,6 @@ For this tutorial, we create a package as following:
 ```
 
 cd ~/ros_ws/src
-
 catkin_create_pkg this_tutorial std_msgs rospy
 
 ```
@@ -155,9 +154,7 @@ After adding a new package, you need to rebuild the workspace, and source it aga
 ```
 
 cd ~/ros_ws/
-
 catkin_make
-
 . ~/ros_ws/devel/setup.bash
 
 ```
@@ -215,9 +212,7 @@ First, let's write and run a python hello world for ROS:
 ```
 
 echo '#!/usr/bin/env python
-
 print("hello rosrun!")
-
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
@@ -249,19 +244,12 @@ In order make it a valid ROS node, we just need to assign it a name and initiate
 ```
 
 echo '#!/usr/bin/env python
-
 import rospy
-
 rospy.init_node("greeter")
-
 rate = rospy.Rate(1) # it means 1hz
-
 while not rospy.is_shutdown():
-
 print("hello world {0}".format(rospy.get_time()))
-
 rate.sleep()
-
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
@@ -309,23 +297,14 @@ We can start a new topic and send signals there:
 ```
 
 echo '#!/usr/bin/env python
-
 import rospy
-
 from std_msgs.msg import String
-
 rospy.init_node("greeter")
-
 rate = rospy.Rate(1) # it means 1hz
-
 pub = rospy.Publisher("greeting_topic", String, queue_size=1)
-
 while not rospy.is_shutdown():
-
 pub.publish("hello world {0}".format(rospy.get_time()))
-
 rate.sleep()
-
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
@@ -372,8 +351,6 @@ rostopic echo /greeting_topic
 
 ```
 
-  
-
 Similar to the echo action for `rostopic`, we can also write a node
 
 which process the published content and then publishes new material.
@@ -381,39 +358,21 @@ which process the published content and then publishes new material.
 ```
 
 echo '#!/usr/bin/env python
-
 import rospy
-
 from std_msgs.msg import String
-
-  
-
 def callback(string):
-
 pub.publish("I heared \"{0}\"".format(string.data))
-
-  
-
 rospy.init_node("feedbacker")
-
 pub = rospy.Publisher("feedback_topic", String, queue_size=1)
-
 sub = rospy.Subscriber("greeting_topic", String, callback)
-
 rospy.spin()
-
 ' > ~/ros_ws/src/this_tutorial/src/feedback.py
 
 chmod +x ~/ros_ws/src/this_tutorial/src/feedback.py
 
 ```
 
-  
-
 Notice that we don't need an infinite loop to keep the node running now. And the frequency of publishing content in feedback_topic depends on the how frequent the subscriber calls the callback function.
-
-  
-  
 
 Now, you can run both of them in two terminals:
 
@@ -424,7 +383,6 @@ Now, you can run both of them in two terminals:
 ```
 
 . ~/ros_ws/devel/setup.bash
-
 rosrun this_tutorial hello.py
 
 ```
@@ -436,7 +394,6 @@ rosrun this_tutorial hello.py
 ```
 
 . ~/ros_ws/devel/setup.bash
-
 rosrun this_tutorial feedback.py
 
 ```
@@ -450,9 +407,7 @@ rostopic echo /feedback_topic
   
 
 We often need to record all topics at once to be able to replicate them later. ROS provides this with `rosbag`. First, you can create a folder for saving it on a file:
-
   
-
 ```
 
 mkdir ~/bagfiles
@@ -468,15 +423,11 @@ While two nodes are running, we can open another terminal and record them all in
 ```
 
 cd ~/bagfiles
-
 rosbag record -a
 
-```
-
-  
+```  
 
 Later, you can play the nodes without running them:
-
   
 
 ```
