@@ -381,8 +381,12 @@ rosrun this_tutorial feedback.py
 ```
 
 **Terminal 3:** 
+
+```
+
 rostopic echo /feedback_topic
 
+```
 
 #### 1.5. Record topics (optional)
 
