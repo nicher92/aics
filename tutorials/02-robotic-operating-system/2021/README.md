@@ -13,8 +13,8 @@ This is a quick tutorial for ROS installation and some practical examples.
         * Download and install [Ubuntu 20.04](https://releases.ubuntu.com/20.04/)
 
     - Or
-    * Ubuntu 16.04 with ROS Kinetic
-    * Ubuntu 18.04 with ROS Melodic
+        * Ubuntu 16.04 with ROS Kinetic
+        * Ubuntu 18.04 with ROS Melodic
 
 ## 1. Dive Into ROS
 
