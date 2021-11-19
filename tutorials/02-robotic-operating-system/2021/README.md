@@ -41,15 +41,10 @@ The result must be something like:
 ```
 
 ROS_ROOT=/opt/ros/melodic/share/ros
-
 ROS_PACKAGE_PATH=/opt/ros/melodic/share
-
 ROS_MASTER_URI=http://localhost:11311
-
 ROSLISP_PACKAGE_DIRECTORIES=
-
 ROS_DISTRO=melodic
-
 ROS_ETC_DIR=/opt/ros/melodic/etc/ros
 
 ```
