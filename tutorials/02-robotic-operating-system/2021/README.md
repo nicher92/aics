@@ -40,18 +40,16 @@ The result must be something like:
 
 ```
 
-ROS_ROOT=/opt/ros/melodic/share/ros
-ROS_PACKAGE_PATH=/opt/ros/melodic/share
+ROS_ROOT=/opt/ros/noetic/share/ros
+ROS_PACKAGE_PATH=/opt/ros/noetic/share
 ROS_MASTER_URI=http://localhost:11311
 ROSLISP_PACKAGE_DIRECTORIES=
-ROS_DISTRO=melodic
-ROS_ETC_DIR=/opt/ros/melodic/etc/ros
+ROS_DISTRO=noetic
+ROS_ETC_DIR=/opt/ros/noetic/etc/ros
 
 ```
 
-  
-
-If you can't find these settings, run `source /opt/ros/melodic/setup.bash`.
+If you can't find these settings, run `source /opt/ros/noetic/setup.bash`.
 
   
 
@@ -81,17 +79,13 @@ codes for ROS:
   
 
 1. Open a terminal window
-
 2. Create a directory for your workspace (e.g. `~/ros_ws`)
-
 3. Run the shell command to make the workspace:
 
 ```
 
 mkdir -p ~/ros_ws/src
-
 cd ~/ros_ws/
-
 catkin_make
 
 ```
