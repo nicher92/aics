@@ -3,8 +3,26 @@
 Here we list several tips for better organisation of your workspace and coding infrastructure for the course. We encourage you to follow these tips when working with course materials and/or submitting your final project. Also, we find these tips generally useful for any programming work conducted in the MLT program.
 
 #### Coding on mlt-gpu from your local machine
-You can run your scripts on mlt-gpu by running everything on your local computer. First, enter the following command in the terminal on your local machine: ``ssh -p 62266 [yourName]@mltgpu.flov.gu.se -L8000:localhost:8000``, where 'yourName' is your gu-account. This should connect you to mlt-gpu and book a port (8000) on the server for you. The port can have any number, which someone does not already use. Then, on your local machine, open ``127.0.0.1:8000`` in your browser. You should see the starting window for Jupyter Lab (given that you installed it on mlt-gpu). Then, if required, enter the login token; you can access it in the terminal where you ran your ssh command. That's it! Now you can navigate mlt-gpu from your local machine and run any code remotely.  
-More detailed information is available on Canvas course webpage under Pages/Course workspace: mlt-gpu, Jupyter notebooks.
+
+You can login to mltgpu using Secure Shell. To login type the following in the terminal:
+
+`ssh -p 62266 gusXXXXXX@mltgpu.flov.gu.se`
+
+where `gusXXXXXX` is your username. After the login you will land on the the terminal on mltgpu. Logout from the server by typing
+
+`logout`
+
+To run a python notebook from your browser on mltgpu, choose a port between 8000 and 8999, e.g. 8801. If several are running python notebook on mltgpu at the same time, each user should pick their own port. Then, we need to setup port forwarding to forward the local port 8801 over the ssh tunnel to the port 8801 on the mltgpu:
+
+`ssh -p 62266 -L8801:localhost:8801 gusXXXXXX@mltgpu.flov.gu.se`
+
+Again, you will land on mltgpu terminal. Here you can start jupyter notebook using the port that is being forwarded to your local machine:
+
+`jupyter notebook --port=8801`
+
+Go to your local browser and open http://localhost:8801 (or change the last number to any other port that you are using). You may need to supply a token. In this case, from the mltgpu terminal copy the same URLs with the token, e.g. `http://127.0.0.1:8801/?token=ce5058889de1b13a477c86e09e3f08cf25028386c65040e9`. You can also simply copy the token from this link and insert in the token window.
+
+When you are done, save your progress (CTRL/CMD +S), close the jupyter notebook on mltgpu (CTRL/CMD+C) and logout.
 
 #### Use virtual environments
 Virtual environments allow you to avoid conflicts between different versions of your project and help your TAs navigate your code and test it. For more, you can read [this thread](https://stackoverflow.com/questions/41972261/what-is-a-virtualenv-and-why-should-i-use-one) (installing environments with pip) or [this one](https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28) (installing environments with conda).
@@ -34,6 +52,3 @@ A different method is to explicitly restrict your scripts to run on a specific g
 ```
 export CUDA_VISIBLE_DEVICES=INTEGER
 ```
-
-#### Project Submission
-By the end of the course, you are required to submit a project to get course credits. The submission consists of (1) a paper and (2) a public GitHub repository that accompanies your paper. Typically, you first run your code on mlt-gpu when working on it (e.g., as notebooks /.py scripts), and then you upload it to your GitHub repo when it's about time to submit it (in the form of .py files and documentation in README.md). The project paper should be approximately 6-8 pages, but it depends on each case individually. For the project paper, we encourage you to use LaTeX, perhaps, [this link](https://www.overleaf.com/learn/latex/Tutorials) can be helpful for you to start with. Also, you should use official ACL latex templates for your project (check it [here](https://www.overleaf.com/latex/templates/acl-2020-proceedings-template/zsrkcwjptpcd)) or official GU template (which you will also probably use for your thesis).
