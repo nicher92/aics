@@ -2,10 +2,12 @@
 
 This is a quick tutorial for ROS installation and some practical examples.
 
-    - you are going to learn how to set up ROS and the workspace
-    - how to run nodes 
-    - how to write nodes with Python.
-    - you are going to run a simple Keras object recognition(as a node which can take images from camera sensors.)
+In this tutorial you will learn:
+
+    - How to set up ROS and the workspace
+    - Run nodes 
+    - Write nodes application with Python.
+    - Run a simple Keras object recognition(as a node which can take images from camera sensors.)
 
 ## Requirements:
     - You should have Ubuntu or VirtualBox (with Ubuntu iso file)
@@ -211,7 +213,7 @@ First, let's write and run a python hello world for ROS:
 
 ```
 
-echo '#!/usr/bin/env python
+echo '#!/usr/bin/env python3
 print("hello rosrun!")
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
@@ -239,13 +241,13 @@ In order make it a valid ROS node, we just need to assign it a name and initiate
 
 ```
 
-echo '#!/usr/bin/env python
+echo '#!/usr/bin/env python3
 import rospy
 rospy.init_node("greeter")
 rate = rospy.Rate(1) # it means 1hz
 while not rospy.is_shutdown():
-print("hello world {0}".format(rospy.get_time()))
-rate.sleep()
+    print("hello world {0}".format(rospy.get_time()))
+    rate.sleep()
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
@@ -286,15 +288,15 @@ We can start a new topic and send signals there:
 
 ```
 
-echo '#!/usr/bin/env python
+echo '#!/usr/bin/env python3
 import rospy
 from std_msgs.msg import String
 rospy.init_node("greeter")
 rate = rospy.Rate(1) # it means 1hz
 pub = rospy.Publisher("greeting_topic", String, queue_size=1)
 while not rospy.is_shutdown():
-pub.publish("hello world {0}".format(rospy.get_time()))
-rate.sleep()
+    pub.publish("hello world {0}".format(rospy.get_time()))
+    rate.sleep()
 ' > ~/ros_ws/src/this_tutorial/src/hello.py
 
 ```
@@ -343,7 +345,7 @@ echo '#!/usr/bin/env python
 import rospy
 from std_msgs.msg import String
 def callback(string):
-pub.publish("I heared \"{0}\"".format(string.data))
+    pub.publish("I heared \"{0}\"".format(string.data))
 rospy.init_node("feedbacker")
 pub = rospy.Publisher("feedback_topic", String, queue_size=1)
 sub = rospy.Subscriber("greeting_topic", String, callback)
