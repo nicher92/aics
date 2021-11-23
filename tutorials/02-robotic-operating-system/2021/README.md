@@ -341,7 +341,7 @@ which process the published content and then publishes new material.
 
 ```
 
-echo '#!/usr/bin/env python
+echo '#!/usr/bin/env python3
 import rospy
 from std_msgs.msg import String
 def callback(string):
