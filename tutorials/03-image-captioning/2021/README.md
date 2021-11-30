@@ -1,3 +1,5 @@
+Paper: https://proceedings.mlr.press/v37/xuc15.html
+
 Dataset: Flickr8k
 
 Model: Encoder-Decoder CNN+LSTM
