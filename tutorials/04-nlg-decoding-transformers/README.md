@@ -29,3 +29,7 @@ Pay attention to the 'Setup' section, you will need to install some dependencies
 However, the repo above is for Python2.7, the updated one is available here: https://github.com/mtanti/coco-caption (Python3+).
 
 When evaluating your models, you will need to import metric classes from .py files in this repo (e.g., BleuScorer in bleu.py), and also will need to pass candidates (generated texts, outputs) and references (ground-truth texts). The general pipeline for evaluation can be viewed in the transformer code that we discuss a bit below.
+
+Code examples for different decoding methods and evaluation are available here: https://github.com/nilinykh/01-par-gen.
+In particular, inspect `utils.py` for beam search (BeamNode class + beam search itself). You can track decoding back to the particular line in `generate.py` file (https://github.com/nilinykh/01-par-gen/blob/1d2084ae42cc2d534ba56bf50d320ab64eea4264/model/generate.py#L127). We first initialise scorers (for metrics), and after some encoding of input features and processing, we prepare for decoding (https://github.com/nilinykh/01-par-gen/blob/1d2084ae42cc2d534ba56bf50d320ab64eea4264/model/generate.py#L309). Implementation of all decoding mechanisms is available there. Note that we use decoding during test or validation phase, but in train phase we do everything with teacher-forcing.
+
