@@ -33,3 +33,9 @@ When evaluating your models, you will need to import metric classes from .py fil
 Code examples for different decoding methods and evaluation are available here: https://github.com/nilinykh/01-par-gen.
 In particular, inspect `utils.py` for beam search (BeamNode class + beam search itself). You can track decoding back to the particular line in `generate.py` file (https://github.com/nilinykh/01-par-gen/blob/1d2084ae42cc2d534ba56bf50d320ab64eea4264/model/generate.py#L127). We first initialise scorers (for metrics), and after some encoding of input features and processing, we prepare for decoding (https://github.com/nilinykh/01-par-gen/blob/1d2084ae42cc2d534ba56bf50d320ab64eea4264/model/generate.py#L309). Implementation of all decoding mechanisms is available there. Note that we use decoding during test or validation phase, but in train phase we do everything with teacher-forcing.
 
+### Multi-Modal Transformers
+
+An implementation of the two-stream multi-modal transformer for image captioning: https://github.com/yahoo/object_relation_transformer.
+There is also the paper link that describes this architecture in more detail. The benefit of using this particular transformer is the way they encode geometric information. It is not a simple set of bounding box coordinates, sizes, locatoins, but rather some relative function (displacement vector), and such more complex geometric representation helps the model to generate spatial relations much better.
+
+There are other transformers: Vl-BERT, LXMERT, UNITER. They all have GitHub repositories, you should be able to access them.
