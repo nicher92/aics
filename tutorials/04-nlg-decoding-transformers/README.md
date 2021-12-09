@@ -4,7 +4,7 @@ Original repository for F-RCNN feature extraction and code to run (in Cafe): htt
 The paper on object feature extraction for image captioning: https://arxiv.org/pdf/1707.07998.pdf
 
 However, we use the model's implementation in PyTorch in Detectron2: https://github.com/facebookresearch/grid-feats-vqa.
-There is a sequence of steps to prepare training of the object feature extractor on our servers. Up to date information (21-12-09) is listed below, just follow the steps:
+There is a sequence of steps to prepare training of the object feature extractor on our servers. Up to date information (21-12-09) is listed below, just follow them. If something does not work or works differently, inform the TAs so that they can update this document.
 
 ```
 0. git clone https://github.com/facebookresearch/grid-feats-vqa
