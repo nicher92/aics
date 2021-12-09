@@ -8,7 +8,7 @@ There is a sequence of steps to prepare training of the object feature extractor
 
 ```
 0. git clone https://github.com/facebookresearch/grid-feats-vqa
-1. conda environment with python 3.6
+1. conda environment with python 3.6 (all commands below should be run inside the created environment!)
 2. pip install pytorch==1.3.0
 3. pip install torchvision==0.4.1
 4. export TORCH_CUDA_ARCH_LIST=7.5\;6.1
