@@ -22,3 +22,10 @@ Above we install particular dependencies and prepare the GPU servers for working
 For information on how to use trained model and extract features for your dataset, read the 'Feature Extraction' part in the original repository of the code (https://github.com/facebookresearch/grid-feats-vqa). You will need to change your data to the COCO format (check the original repository for more info).
 
 ### NLG: Evaluation and Decoding
+
+Original repository with most of the widely used metrics is available here: https://github.com/tylin/coco-caption.
+Pay attention to the 'Setup' section, you will need to install some dependencies for different metrics.
+
+However, the repo above is for Python2.7, the updated one is available here: https://github.com/mtanti/coco-caption (Python3+).
+
+When evaluating your models, you will need to import metric classes from .py files in this repo (e.g., BleuScorer in bleu.py), and also will need to pass candidates (generated texts, outputs) and references (ground-truth texts). The general pipeline for evaluation can be viewed in the transformer code that we discuss a bit below.
