@@ -45,7 +45,7 @@ We strongly suggest you look at some of those (for example, MSCOCO) to see how d
 
 https://github.com/e-bug/volta/blob/main/data/README.md
 
-## Tips on using for your projects
+## Tips on using VOLTA for your projects
 
 Think about the task at hand. Example cases:
 
