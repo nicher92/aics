@@ -15,7 +15,7 @@ But first, please read the paper and check the repository:
 ## How to install VOLTA on mlt-gpu
 
 Follow the steps below, they have been tested on mlt-gpu.
-The differ a bit from those in the official repository. Last update: 10/01/2022.
+They differ a bit from those in the official repository. Last update: 10/01/2022.
 
 ```
 git clone --recurse-submodules https://github.com/e-bug/volta.git
