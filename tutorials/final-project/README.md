@@ -1,4 +1,4 @@
-### Codebase for working with multi-modal transformers (MMTs)
+# Codebase for working with multi-modal transformers (MMTs)
 
 This folder includes information on how to install and use VOLTA framework to use in your AICS projects.
 This framework provides a unified codebase for a variety of multi-modal transformers.
