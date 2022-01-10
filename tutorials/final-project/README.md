@@ -60,7 +60,7 @@ One example is `line 260` in `/volta/encoders.py`:
 tt_attention_scores = torch.matmul(t_query_layer, t_key_layer.transpose(-1, -2))  # [bs, num_heads, seq_len, seq_len]
 ```
 
-What does it tell us? It says that this linr calculates attention of predicted text tokens on input text tokens. Why and how?
+What does it tell us? It says that this line calculates attention of predicted text tokens on input text tokens. Why and how?
 Because the transformer sees both text tokens and visual regions and, if it learns to predict the masked token (for example), it will look at
 text or/and vision. VOLTA provides functionality to control for the modality that is attended.
 If you look at the other lines in this script, you will see that there are also attention weights on other modality.
