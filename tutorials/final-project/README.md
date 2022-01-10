@@ -49,21 +49,19 @@ https://github.com/e-bug/volta/blob/main/data/README.md
 
 Think about the task at hand. Example cases:
 
-* You want to take pre-trained ViLBERT and fine-tune it for the task of predicting the masked word in your own dataset.
+1. You want to take pre-trained ViLBERT and fine-tune it for the task of predicting the masked word in your own dataset.
 Luckily, ViLBERT has been pre-trained for the tasked of Masked Language Modelling on Conceptual Captions, so there must be a code for this.
 You need to locate this part of the code, carefully read it and think how you would prepare your dataset to run with this code.
 
-* You want to extract attention weights from ViLBERT. What is attention? Attention scores are multiplication of keys and queries, so you need to look for them in the code.
+2. You want to extract attention weights from ViLBERT. What is attention? Attention scores are multiplication of keys and queries, so you need to look for them in the code.
 One example is `line 260` in `/volta/encoders.py`:
-
 ```
 tt_attention_scores = torch.matmul(t_query_layer, t_key_layer.transpose(-1, -2))  # [bs, num_heads, seq_len, seq_len]
 ```
-
 What does it tell us? It says that this line calculates attention of predicted text tokens on input text tokens. Why and how?
 Because the transformer sees both text tokens and visual regions and, if it learns to predict the masked token (for example), it will look at
 text or/and vision. VOLTA provides functionality to control for the modality that is attended.
 If you look at the other lines in this script, you will see that there are also attention weights on other modality.
 When you test (!) your model, you will need to save attention weights somewhere explicitly, so that then you can visualise them.
 
-* More tips will be provided!
+3. More tips will be provided!
